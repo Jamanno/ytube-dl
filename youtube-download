@@ -1,0 +1,5 @@
+#!/bin/bash
+youtube-dl --extract-audio --audio-format mp3 -F "$1"
+read -p "Format: " downloadtype
+echo $downloadtype
+youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 -f $downloadtype $1
