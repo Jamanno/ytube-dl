@@ -1,5 +1,9 @@
 #!/bin/bash
 youtube-dl --extract-audio --audio-format mp3 -F "$1"
-read -p "Format: " downloadtype
-echo $downloadtype
+read -p "Format: (default 141 for best audio)" downloadtype 
+if [[ -z "$downloadtype" ]]; then
+	downloadtype=141
+fi
+echo "adding ytlink to url file"
+echo $1 >> urls
 youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 -f $downloadtype $1
